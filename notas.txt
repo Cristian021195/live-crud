@@ -1,0 +1,22 @@
+folder_structure:
+->api:
+    -> controllers: si usamos mvc, si al llamada api se realiza pasa por algun controlador (validador, etc).
+    -> helpers: funciones o clases que usaremos a lo largo de todos nuestros archivos, funciones de calculo, validadores, etc.
+    -> middlewares: "app.use(express.json())" son funciones que se ejecutan antes de realizar la peticion http.
+        :app.use('home', Home); , podemos hacer validaciones previas al endpoint si los datos que llegan del body no nos sirven o no validan.
+        app.post('/', noEsPedro, (req,res)=>{res.send('no es pedro')})
+        noEsPedro(req,res,next){body.name==='Pedro' -> res(no se permite) else {next()}}
+        podemos usar middlewares que validen TOKENS joyaa
+    -> models: esquemas en caso de mongodb.
+    -> routes: contiene todas las rutas de la aplicacion. (archivos diferentes segun endpoint, por ejemplo clase User.js)
+    -> services: logica de negocio, no tanto validacion.
+    -> validations: funciones de validacion de datos, que si no lo son, no llegan al controlador ni modifican datos en ddbb.
+->config:
+    -> DataBaseConfig.js: archivos que contienen clases u objetos literales con la configuracion de la bbdd por ej.
+    -> Config.js: por ejemplo puertos, rutas de servicios externos de otras apis, constantes, que no van en variables de entorno.
+
+->Notas.txt: notas simples del proyecto.
+->.env usa el paquete .dotenv para funcionar. son variables de entorno, aqui pueden ir keys de diferentes apis o informacion sensible.
+
+node modules
+npm i express express-validator bcryptjs dotenv cors sequelize web-push socket.io mysql2
